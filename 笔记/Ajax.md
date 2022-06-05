@@ -10,7 +10,10 @@
 
 ## XMLHttpRequest
 >是浏览器提供的Javascript对象，简称xhr，用于请求服务器上的资源
->不管是get还是post都是通过查询字符串的形式传给服务器的，但是方式不同
+>不管是get还是post都可以通过查询字符串的形式传给服务器的，但是方式不同
+* get请求通过查询字符串的形式传参于url中
+* post请求通过查询字符串的形式或者json的形式，传参于http的body中
+* 所以他们两个在服务端的接受方式也不一样
 #### xhr的get请求
 ```javascript
 //创建xhr对象
@@ -22,7 +25,7 @@ xhr.send()
 //监听 onreadystatechange 事件
 xhr.onreadystatchange = function () {
 if(xhr.readyState === 4 && xhr.status === 200)  --固定写法，表示获取成功
-console.log(xhr.responseText)  --获取数据，返回的是JSON字符串
+console.log(xhr.responseText)  --获取数据，返回的是JSON字符串（或者是普通字符串?）
 }
 ```
 ##### 带参数的get请求
@@ -38,6 +41,7 @@ xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks?id=1&name=xxx')
 xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks?id=1&name=xxx')
 ```
 ### xhr的post请求
+* post请求在http的body内，不在url里
 ```javascript
 //创建xhr对象
 let xhr = XMLHttpResquest()
@@ -45,8 +49,8 @@ let xhr = XMLHttpResquest()
 xhr.open('POST', 'url')
 //调用Content-Type 属性（固定写法）
 xhr.setResquestHeader('Content-Type', 'application/x-xxx-form-urlencoded')
-//调用send函数 一查询字符串的形式提交数据给服务器（不用问号）
-xhr.send(查询字符串形式的数据)
+//调用send函数 可以查询字符串的形式提交数据给服务器，也可以json格式传给服务器
+xhr.send()
 //监听 onreadystatechange 事件
 xhr.onreadystatchange = function () {
 if(xhr.readyState === 4 && xhr.status === 200)  --固定写法，表示获取成功
