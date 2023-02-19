@@ -147,3 +147,6 @@ git remote add origin 复制上仓库地址
 5. 保证仓库里面有提交的信息，也就是保证仓库与工作区同步过
 6. git remote add 远程仓库名 git@github.com:S-Huan/shaohuan_De_notes.git
 7. git push -u 远程仓库名 远程分支名
+
+
+222
